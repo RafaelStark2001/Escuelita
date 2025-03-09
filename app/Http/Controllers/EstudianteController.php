@@ -38,7 +38,8 @@ class EstudianteController extends Controller
 
         Estudiante::create($request->all());
 
-        return redirect()->route('/formulario')->with('success', 'Estudiante agregado.');
+        return redirect()->route('estudiantes.index')->with('success', 'Estudiante agregado correctamente.');
+
     }
 
     /**
