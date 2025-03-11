@@ -22,6 +22,7 @@
                 <th>Correo</th>
                 <th>Fecha de Nacimiento</th>
                 <th>Ciudad</th>
+                <th>Acciones</th>
             </tr>
             @foreach ($estudiantes as $estudiante)
             <tr>
@@ -30,11 +31,17 @@
                 <td>{{ $estudiante->correo }}</td>
                 <td>{{ $estudiante->fecha_nacimiento }}</td>
                 <td>{{ $estudiante->ciudad }}</td>
+                <td>
+                    <a href="{{ route('estudiantes.show', $estudiante->id) }}">Ver  |</a>
+                    <a href="{{ route('estudiantes.edit', $estudiante) }}">  Editar  |</a>
+                    <a href="">  Eliminar</a>
+                </td>
             </tr>
             @endforeach
         </table>
     @endif
 
+    <br>
     <a href="{{ route('estudiantes.create') }}">Agregar Nuevo Estudiante</a>
 
 

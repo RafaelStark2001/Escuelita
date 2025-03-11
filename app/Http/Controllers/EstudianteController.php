@@ -47,7 +47,8 @@ class EstudianteController extends Controller
      */
     public function show(Estudiante $estudiante)
     {
-        //
+        return view('estudiantes.show-estudiantes', compact('estudiante'));
+
     }
 
     /**
@@ -55,7 +56,8 @@ class EstudianteController extends Controller
      */
     public function edit(Estudiante $estudiante)
     {
-        //
+
+        return view('estudiantes.edit-estudiantes', compact('estudiante'));
     }
 
     /**
@@ -63,8 +65,16 @@ class EstudianteController extends Controller
      */
     public function update(Request $request, Estudiante $estudiante)
     {
-        //
+
+        $estudiante->nombre = $request->nombre;
+        $estudiante->correo = $request->correo;
+        $estudiante->fecha_nacimiento = $request->fecha_nacimiento;
+        $estudiante->ciudad = $request->ciudad;
+        $estudiante->save();
+
+        return redirect()->route('estudiantes.show', $estudiante)->with('success', 'Estudiante actualizado correctamente');
     }
+
 
     /**
      * Remove the specified resource from storage.
