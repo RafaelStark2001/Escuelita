@@ -32,9 +32,22 @@
                 <td>{{ $estudiante->fecha_nacimiento }}</td>
                 <td>{{ $estudiante->ciudad }}</td>
                 <td>
-                    <a href="{{ route('estudiantes.show', $estudiante->id) }}">Ver  |</a>
-                    <a href="{{ route('estudiantes.edit', $estudiante) }}">  Editar  |</a>
-                    <a href="">  Eliminar</a>
+                    <!-- Botón Ver -->
+                    <form action="{{ route('estudiantes.show', $estudiante->id) }}" method="GET" style="display:inline;">
+                        <button type="submit">Ver</button>
+                    </form>
+                    <!-- Botón Editar -->
+                    <form action="{{ route('estudiantes.edit', $estudiante) }}" method="GET" style="display:inline;">
+                        <button type="submit">Editar</button>
+                    </form>
+                    <!-- Botón Eliminar -->
+                    <form action="{{ route('estudiantes.destroy', $estudiante->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" onclick="return confirm('¿Estás seguro de eliminar este estudiante?')">
+                            Eliminar
+                        </button>
+                    </form>
                 </td>
             </tr>
             @endforeach
@@ -42,8 +55,10 @@
     @endif
 
     <br>
-    <a href="{{ route('estudiantes.create') }}">Agregar Nuevo Estudiante</a>
-
+    <!-- Botón Agregar Estudiante -->
+    <form action="{{ route('estudiantes.create', $estudiante) }}" method="GET" style="display:inline;">
+        <button type="submit">Agregar Nuevo Estudiante</button>
+    </form>
 
 </body>
 </html>

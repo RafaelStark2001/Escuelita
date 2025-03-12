@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Editar Estudiante</title>
 </head>
 <body>
 
@@ -53,7 +53,10 @@
     </form>
 
     <br>
-    <a href="{{ route('estudiantes.index', $estudiante) }}">Ver Tabla de Estudiantes</a>
+    <!-- Botón Tabla Estudiantes -->
+    <form action="{{ route('estudiantes.index', $estudiante) }}" method="GET" style="display:inline;">
+        <button type="submit">Ver Tabla de Estudiantes</button>
+    </form>
 
 </body>
 </html>
