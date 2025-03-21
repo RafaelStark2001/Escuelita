@@ -19,7 +19,7 @@ class EstudianteFactory extends Factory
         return [
             'nombre' => fake()->name(),
             'correo' => fake()->unique()->safeEmail(),
-            'fecha_nacimiento' => now(),
+            'fecha_nacimiento' => fake()->date('Y-m-d'),
             'ciudad' => fake()->city(),
         ];
     }
