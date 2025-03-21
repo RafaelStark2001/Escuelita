@@ -56,7 +56,7 @@
 
     <br>
     <!-- Botón Agregar Estudiante -->
-    <form action="{{ route('estudiantes.create', $estudiante) }}" method="GET" style="display:inline;">
+    <form action="{{ route('estudiantes.create') }}" method="GET" style="display:inline;">
         <button type="submit">Agregar Nuevo Estudiante</button>
     </form>
 

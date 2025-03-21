@@ -33,5 +33,16 @@
         <button type="submit">Ver Tabla de Estudiantes</button>
     </form>
 
+    <br>
+    <br>
+    <!-- Boton Eliminar Estudiante -->
+    <form action="{{ route('estudiantes.destroy', $estudiante->id) }}" method="POST" style="display:inline;">
+        @csrf
+        @method('DELETE')
+        <button type="submit" onclick="return confirm('¿Estás seguro de eliminar este estudiante?')">
+            Eliminar
+        </button>
+    </form>
+
 </body>
 </html>

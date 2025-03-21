@@ -65,12 +65,14 @@ class EstudianteController extends Controller
      */
     public function update(Request $request, Estudiante $estudiante)
     {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'correo' => 'required|email|unique:estudiantes,correo,' . $estudiante->id,
+            'fecha_nacimiento' => 'required|date',
+            'ciudad' => 'required|string|max:255'
+        ]);
 
-        $estudiante->nombre = $request->nombre;
-        $estudiante->correo = $request->correo;
-        $estudiante->fecha_nacimiento = $request->fecha_nacimiento;
-        $estudiante->ciudad = $request->ciudad;
-        $estudiante->save();
+        $estudiante->update($request->all());
 
         return redirect()->route('estudiantes.show', $estudiante)->with('success', 'Estudiante actualizado correctamente');
     }
